@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS my_game_db;
+CREATE DATABASE my_game_db;
