@@ -16,13 +16,14 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // Session
 // ==============================================
 const sess = {
-    // secret: 'Super secret secret',
-    // cookie: {},
-    // resave: false,
-    // saveUninitialized: true,
-    // store: new SequelizeStore({
-    //     db: sequelize
-    // })
+    //replace secret in env
+    secret: 'Super Secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
 };
 
 // Use Session
