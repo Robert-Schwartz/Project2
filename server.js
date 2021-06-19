@@ -1,5 +1,6 @@
 // Required Packages
 // =============================================
+const routes = require('./controllers');
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -29,11 +30,11 @@ const sess = {
 // Use Session
 app.use(session(sess));
 
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 // Handlebars
 // ================================================
 // Helpers
-const helpers = require('./utils/helpers');
-const hbs = exphbs.create({ helpers });
 
 // Handlebars Engine
 app.engine('handlebars', hbs.engine);
@@ -45,7 +46,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Use Controllers
-app.use(require('./controllers/'));
+// app.use(require('./controllers/'));
+
 
 // Listen for Port
 sequelize.sync({ force: false }).then(() => {
