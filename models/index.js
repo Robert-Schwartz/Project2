@@ -2,6 +2,7 @@ const User = require('./User')
 const Post = require('./Post')
 const Comment = require('./Comment');
 const Games = require('./Games');
+const Like = require('./Like')
 
 // associations
 
@@ -29,7 +30,30 @@ User.hasMany(Comment, {
 Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
+Like.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+Like.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+User.hasMany(Like, {
+    foreignKey: 'user_id'
+});
+Post.hasMany(Like, {
+    foreignKey: 'post_id'
+});
+User.belongsToMany(Post, {
+    through: Like,
+    as: 'likes',
+    foreignKey: 'user_id'
+});
+Post.belongsToMany(User, {
+    through: Like,
+    as: 'likes',
+    foreignKey: 'post_id'
+});
 
 
 
-module.exports = { User, Comment, Post, Games };
+
+module.exports = { User, Comment, Post, Games, Like };
