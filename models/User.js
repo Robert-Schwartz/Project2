@@ -5,7 +5,9 @@ const passport = require('passport');
 
 
 class User extends Model {
-
+    checkPassword(loginPW) {
+        return bcrypt.compareSync(loginPW, this.password);
+    }
 }
 
 
@@ -35,11 +37,25 @@ User.init(
             validate: {
                 len: [4]
             }
+        },
+        profilePicture: {
+            type: DataTypes.BLOB,
+            allowNull: false
         }
     },
-// need to pass in the password hook so we can have password authentication before its saved
-
     {
+        hooks: {
+            // using the before create hook to let User model to know to hash the password before saving it to the system
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            }
+
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
