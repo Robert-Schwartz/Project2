@@ -46,7 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Use Controllers
-// app.use(require('./controllers/'));
+app.use(require('./controllers/'));
 
 
 // Listen for Port
