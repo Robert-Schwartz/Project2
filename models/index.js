@@ -36,12 +36,12 @@ Like.belongsTo(User, {
 Like.belongsTo(Post, {
     foreignKey: 'post_id'
 });
-User.hasMany(Like, {
+/*User.hasMany(Like, {
     foreignKey: 'user_id'
 });
 Post.hasMany(Like, {
     foreignKey: 'post_id'
-});
+});*/
 User.belongsToMany(Post, {
     through: Like,
     as: 'likes',

@@ -1,1 +1,35 @@
-This is myGAME
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myGAME</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<header>
+<body>
+    <form class="signup-form">
+        <div>
+            <label for="username-signup">username:</label>
+            <input type="text" id="username-signup" />
+        </div>
+        <div>
+            <label for="email-signup">email:</label>
+            <input type="text" id="email-signup" />
+        </div>
+        <div>
+            <label for="password-signup">password:</label>
+            <input type="password" id="password-signup" />
+        </div>
+        <form id="file-up" action="/profile" method="post" enctype="multipart/form-data">
+            <input type="file" name="avatar" />
+        </form>
+        <div>
+            <button type="submit">signup</button>
+        </div>
+        <script src="/javascript/sign-up.js"></script>
+    </form>
+</body>
+</header>
+</html>
