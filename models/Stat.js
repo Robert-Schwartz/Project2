@@ -1,4 +1,5 @@
-const { Model, DataTypes, INTEGER, STRING } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Stat extends Model {};
 
@@ -9,20 +10,27 @@ Stat.init({
         autoIncrement: true
     },
     name: {
-        DataTypes: STRING,
+        type: DataTypes.STRING,
         allowNull: false
     }, 
     value: {
-        DataTypes: {STRING, INTEGER},
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     game_id: {
-        DataTypes: INTEGER,
+        type:  DataTypes.INTEGER,
         references: {
             model: 'game',
             key: "id"
         }
     }
-})
+}, 
+    {
+        sequelize,
+        createdAt: true,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'post'
+    })
 
 module.exports = Stat;
