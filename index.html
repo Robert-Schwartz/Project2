@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyGame</title>
+  <<<<<<< HEAD <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyGame</title>
 </head>
 
 <body>
@@ -170,6 +170,27 @@
       </p>
     </div>
   </footer>
+  <form class="signup-form">
+    <div>
+      <label for="username-signup">username:</label>
+      <input type="text" id="username-signup" />
+    </div>
+    <div>
+      <label for="email-signup">email:</label>
+      <input type="text" id="email-signup" />
+    </div>
+    <div>
+      <label for="password-signup">password:</label>
+      <input type="password" id="password-signup" />
+    </div>
+    <form id="file-up" action="/profile" method="post" enctype="multipart/form-data">
+      <input type="file" name="avatar" />
+    </form>
+    <div>
+      <button type="submit">signup</button>
+    </div>
+    <script src="/javascript/sign-up.js"></script>
+  </form>
 </body>
 
 </html>
