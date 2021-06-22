@@ -18,7 +18,7 @@ Stat.init({
         allowNull: false
     },
     game_id: {
-        type:  DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         references: {
             model: 'game',
             key: "id"
@@ -30,7 +30,7 @@ Stat.init({
         createdAt: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post'
+        modelName: 'stat'
     })
 
 module.exports = Stat;
