@@ -1,4 +1,9 @@
-const { User, Post, Games, Like, Stat } = require('../models')
+const User = require('./User')
+const Post = require('./Post')
+const Comment = require('./Comment');
+const Games = require('./Games');
+const Like = require('./Like')
+const Stat = require('./Stat');
 
 // associations
 
@@ -51,9 +56,10 @@ Post.belongsToMany(User, {
 Games.hasMany(Stat, {
     foreignKey: 'game_id'
 })
-Stat.belongsToMany(Games, {
-    foreignKey: 'stat_id'
+Stat.hasMany(Games, {
+    foreignKey: 'Stat_id'
 })
 
 
-module.exports = { User, Comment, Post, Games, Like, Stat };
+
+module.exports = { User, Comment, Post, Games, Like };
