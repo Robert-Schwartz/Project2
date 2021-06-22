@@ -1,12 +1,13 @@
+const router = require('express').Router();
+
 //const multer = require('multer');
 const User = require('../../models/User');
-const router = require('express').Router();
+
 //const images = multer('../../public/images/')
 
 //User create route, username is passed in from the event call on the front end.
 
-
-router.post('/create',  (req, res) => {
+router.post('/create', /*image.single('image')*/ (req, res) => {
     User.create({
         username: req.body.username,
         email: req.body.email,

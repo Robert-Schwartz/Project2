@@ -11,15 +11,13 @@ router.get('/', withAuth, (req, res) => {
 
         const games = dbGameData.map(post => post.get({plain: true}));
 
-        res.render('dashboard', {games, loggedIn: true});
+        res.render('profile', {games, loggedIn: true});
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
     })
 })
 
-router.get('/create', withAuth, (req, res) => {
-    game
-})
+
 
 module.exports = router;
