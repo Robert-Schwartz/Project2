@@ -1,40 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myGAME</title>
+    <title>MyGame</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<header>
-<body>
-    <div class="wrapper">
-        <header>
-            <h1>
-                <a href="/">myGAME</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                {{!-- <a href="/dashboard">dashboard</a>
-                <button id="logout" class="btn-no-style">logout</button> --}}
-                {{else}}
-                {{!-- <a href="/login">login</a> --}}
-                {{/if}}
-            </nav>
-        </header>
-        <main>
-            {{{ body }}}
-        </main>
-        <footer>
-            Yo!
-        </footer>
-    </div>
 
-    {{#if loggedIn}}
-    {{!-- <script src="/javascript/logout.js"></script> --}}
-    {{/if}}
+<body>
+    <!--Header-->
+    {{>header}}
+
+    <!--Page-->
+    {{{ body }}}
+
+    <!--Footer-->
+    {{>footer}}
+    <script src="/javascript/"></script>
 </body>
-</header>
+
 </html>
