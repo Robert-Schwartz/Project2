@@ -21,3 +21,5 @@ router.get('/', withAuth, (req, res) => {
 router.get('/create', withAuth, (req, res) => {
     game
 })
+
+module.exports = router;
