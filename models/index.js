@@ -53,12 +53,13 @@ Post.belongsToMany(User, {
     as: 'likes',
     foreignKey: 'post_id'
 });
+Stat.belongsTo(Games, {
+    foreignKey: 'game_id'
+});
 Games.hasMany(Stat, {
     foreignKey: 'game_id'
 })
-Stat.hasMany(Games, {
-    foreignKey: 'Stat_id'
-})
+
 
 
 

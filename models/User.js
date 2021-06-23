@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const passport = require('passport');
+const bcrypt = require('bcrypt');
+
 
 
 
@@ -37,11 +38,12 @@ User.init(
             validate: {
                 len: [4]
             }
-        },
-        profilePicture: {
-            type: DataTypes.BLOB,
-            allowNull: false
         }
+        // commenting out profilePicture so i can test the routes
+        // profilePicture: {
+        //     type: DataTypes.BLOB,
+        //     allowNull: false
+        // }
     },
     {
         hooks: {

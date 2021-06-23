@@ -1,54 +1,112 @@
 const router = require('express').Router();
 //const multer = require('multer');
 
-const User = require('../../models/User');
+const { User, Post, Comment, Games } = require('../../models');
+const router = require('express').Router();
+
+
 //const images = multer('../../public/images/')
 
 
 //User create route, username is passed in from the event call on the front end.
 
-router.get('/', (req, res) => {
-    User.findAll({ attributes: { exclude: ['password'] }})
-    .then(result => {
-        res.json(result);
-    }).catch(err => {
-        console.log(err)
-        res.status(500).json(err);
-    })
-})
-
 router.get('/:id', (req, res) => {
     User.findOne({
-        attributes: { exclude:  ['password'] },
+        attributes: { exclude: ['password'] },
         where: {
-            user_id: req.params.id
+            id: req.params.id
+        },
+        include: [
+            {
+                model: Post,
+                attributes: ['id', 'title', 'content', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['title']
+                }
+            },
+            {
+                model: Games,
+                attributes: ['id', 'title'],
+                
+            }
+        ]
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
         }
-    }).then(result => {
-        res.json(result)
-        res.status(500).json(err);
+        res.json(dbUserData);
     })
-})
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+});
 
-router.post('/', /*image.single(req.body.username),*/ (req, res) => {
+// make a new user
+
+router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
-        profilePicture: req.body.profilePicture
-    }).then(result => {
+        password: req.body.password
+        // profilePicture: req.body.profilePicture
+
+    }).then(dbUserData => {
         req.session.save(() => {
-            req.session.user_id = result.id;
-            req.session.username = result.username;
-            req.session.profilePicture = result.profilePicture;
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            // req.session.profilePicture = result.profilePicture;
+
+            // req.session.loggedIn = true;
+
+            res.json(dbUserData);
+        });
+
+    })
+});
+
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'email provided not found!' });
+            return;
+        }
+        const validatePassword = dbUserData.checkPassword(req.body.password);
+        if (!validatePassword) {
+            res.status(400).json({ message: 'Password Incorrect' });
+            return;
+        }
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-            res.json(result);
-        })
+            res.json({ user: dbUserData, message: 'You are logged in!' });
+        });
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
-    })
-})
+    });
+});
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
 
 router.delete('/delete/:id', (req, res) => {
     User.destroy({
@@ -59,6 +117,5 @@ router.delete('/delete/:id', (req, res) => {
         res.json(result)
     })
 })
-
 
 module.exports = router;
