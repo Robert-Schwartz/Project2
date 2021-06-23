@@ -1,13 +1,35 @@
 const router = require('express').Router();
-
 //const multer = require('multer');
-const User = require('../../models/User');
 
+const User = require('../../models/User');
 //const images = multer('../../public/images/')
+
 
 //User create route, username is passed in from the event call on the front end.
 
-router.post('/create', /*image.single('image')*/ (req, res) => {
+router.get('/', (req, res) => {
+    User.findAll({ attributes: { exclude: ['password'] }})
+    .then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err)
+        res.status(500).json(err);
+    })
+})
+
+router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: { exclude:  ['password'] },
+        where: {
+            user_id: req.params.id
+        }
+    }).then(result => {
+        res.json(result)
+        res.status(500).json(err);
+    })
+})
+
+router.post('/', /*image.single(req.body.username),*/ (req, res) => {
     User.create({
         username: req.body.username,
         email: req.body.email,
@@ -27,5 +49,16 @@ router.post('/create', /*image.single('image')*/ (req, res) => {
         res.status(500).json(err);
     })
 })
+
+router.delete('/delete/:id', (req, res) => {
+    User.destroy({
+        where: {
+            user_id: req.params.id
+        }
+    }).then(result => {
+        res.json(result)
+    })
+})
+
 
 module.exports = router;
