@@ -16,13 +16,13 @@ Games.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
+        }
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'games'       
+        modelName: 'game'       
     }
 )
 
