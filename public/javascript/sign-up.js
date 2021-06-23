@@ -1,3 +1,4 @@
+
 // Sign up Form Function
 async function signupFormHandler(event) {
     event.preventDefault();
@@ -5,12 +6,7 @@ async function signupFormHandler(event) {
     const username = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-    const profPic = document.querySelector('#file-up');
 
-    //const formData = new FormData();
-
-    //formData.append("name", username.value);
-    //formData.append("files", profPic)
     // POST the username, email, and password from the form to our server,
     if (username && email && password) {
         const response = await fetch('/api/users', {

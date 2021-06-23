@@ -1,20 +1,15 @@
+const router = require('express').Router();
 //const multer = require('multer');
+
 const { User, Post, Comment, Games } = require('../../models');
 const router = require('express').Router();
 
+
 //const images = multer('../../public/images/')
+
 
 //User create route, username is passed in from the event call on the front end.
 
-router.get('/', (req, res) => {
-    User.findAll({
-        attributes: { exclude: ['password'] }
-    }).then(dbUserData => res.json(dbUserData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
 router.get('/:id', (req, res) => {
     User.findOne({
         attributes: { exclude: ['password'] },
@@ -113,7 +108,14 @@ router.post('/logout', (req, res) => {
     }
 });
 
-
-module.exports = router;
+router.delete('/delete/:id', (req, res) => {
+    User.destroy({
+        where: {
+            user_id: req.params.id
+        }
+    }).then(result => {
+        res.json(result)
+    })
+})
 
 module.exports = router;
