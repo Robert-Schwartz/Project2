@@ -2,15 +2,11 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-
-
-
 class User extends Model {
     checkPassword(loginPW) {
         return bcrypt.compareSync(loginPW, this.password);
     }
 }
-
 
 User.init(
     {
@@ -39,11 +35,6 @@ User.init(
                 len: [4]
             }
         }
-        // commenting out profilePicture so i can test the routes
-        // profilePicture: {
-        //     type: DataTypes.BLOB,
-        //     allowNull: false
-        // }
     },
     {
         hooks: {

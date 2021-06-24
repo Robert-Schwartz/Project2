@@ -122,7 +122,3 @@ router.get('/post/:id', (req, res) => {
 });
 
 module.exports = router;
-
-
-
-module.exports = router;
