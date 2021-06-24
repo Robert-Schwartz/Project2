@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        },
+        }, 
         include: [
             {
                 model: Post,
@@ -61,6 +61,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
         // profilePicture: req.body.profilePicture
@@ -68,6 +70,8 @@ router.post('/', (req, res) => {
     }).then(dbUserData => {
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
+            req.session.firstName = dbUserData.firstName;
+            req.session.lastName = dbUserData.lastName;
             req.session.username = dbUserData.username;
             // req.session.profilePicture = result.profilePicture;
 

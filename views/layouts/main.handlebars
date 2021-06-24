@@ -24,7 +24,14 @@
             <a href="/login" class="button is-success">login</a>
             {{/if}}
         </div>
+
     </nav>
+    {{#if loggedIn}}
+    <a href="/createStats">
+        <button id="new" class="button is-link is-light is-medium is-fullwidth">Add Stats</button>
+    </a>
+    {{/if}}
+
 
     <section class="section">
     {{> hero}}
