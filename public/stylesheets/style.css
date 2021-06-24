@@ -8,12 +8,35 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+article {
+    justify-content: space-between;
+}
+
+#forms {
+    margin: 20px;
+    justify-content: space-around;
+}
+
 nav {
+    margin: 5px;
+    padding: 15px;
+    justify-content: flex-end;
+}
+
+nav i {
+    font-size: xx-large;
+}
+
+section {
     justify-content: space-between;
     background-image: url('../stylesheets/img/hero.jpeg');
     background-position: center;
     background-size: cover;
     font-size: 20px;
+}
+
+.hero-body i {
+    color: white;
 }
 
 .hero-text {

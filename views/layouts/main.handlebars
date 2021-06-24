@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyGame</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/c55b01837c.js" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-    <nav class="section">
+    <nav class="navbar is-dark">
         <div class="is-half">
-            <a href="/">Home</a>
+            <i class="fas fa-user-astronaut"></i>
+            <a href="/" class="button is-primary">Home</a>
             {{#if loggedIn}}
             <a href="/profile">Profile</a>
             <button class="button is-danger is-medium home-logout" id="logout">Logout</button>
@@ -21,14 +24,18 @@
             <a href="/login" class="button is-success">login</a>
             {{/if}}
         </div>
-    {{> hero}}
     </nav>
+
+    <section class="section">
+    {{> hero}}
+    </section>
 
     <main>
         {{{ body }}}
     </main>
     <footer>
     {{>footer}}
+
     </footer>
 
     {{#if loggedIn}}
