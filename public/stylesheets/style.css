@@ -35,8 +35,13 @@ section {
     font-size: 20px;
 }
 
+.hero-body {
+     display: inline-flex;
+}
+
 .hero-body i {
     color: white;
+    text-shadow: 4px 7px 5px black;
 }
 
 .hero-text {
@@ -44,7 +49,7 @@ section {
     font-weight: bolder;
     font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 30px;
-    text-shadow: 2px 3px 2px black;
+    text-shadow: 3px 4px 3px black;
 }
 
 #title {
@@ -52,7 +57,7 @@ section {
     font-weight: bolder;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 80px;
-    text-shadow: 2px 3px 2px black;
+    text-shadow: 4px 7px 5px black;
 }
 
 .footer {
