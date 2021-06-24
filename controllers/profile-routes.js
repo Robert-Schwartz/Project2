@@ -54,6 +54,11 @@ router.get('/edit/:id', (req, res) => {
         });
 });
 
+router.get('/editstat', (req, res) => {
+    Games.findAll({}).then(gameData => {
+        res.render('game-add', gameData);
+    })
+});
 
 
 module.exports = router;
