@@ -46,7 +46,10 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: ['username', 'profilePicture']
+                attributes: [
+                    'username',
+                    //  'profilePicture'
+                ]
             },
             {
                 model: Comment,
@@ -97,7 +100,7 @@ router.put('/:id', withAuth, (req, res) => {
         {
             where: {
                 id: req.params.id
-            }
+            } 
         })
         .then(dbPostData => {
             if (!dbPostData) {

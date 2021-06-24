@@ -1,20 +1,16 @@
 <article>
-    <div class="column is-half">
     {{>gameSearch}}
-    </div>
-    <div class="column is-half">
-    {{>friendSearch}}
-    </div>
+    {{!-- {{>friendSearch}} --}}
 </article>
 
 {{!-- Showing post from friends --}}
-<ol class="post-list">
+<ol class="post-list"></ol>
     {{#each posts as |post|}}
     <li>
         {{> post-view post }}
     </li>
     {{/each}}
-</ol>
+</ol> 
 
 
 {{!-- <script src="/javascript/login.js"></script>

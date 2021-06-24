@@ -1,3 +1,24 @@
+<div class="box">
+    <article class="media">
+        <div class="media-left">
+            <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <form action="/profile" method="post" enctype="multipart/form-data"> <input type="file" name="avatar" />
+                </form>
+            </figure>
+        </div>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>{{user.firstName}} {{user.LastName}} </strong> <small> {{user.username}} </small>
+                    <br>
+                </p>
+            </div>
+
+        </div>
+    </article>
+</div>
+
 <div class="columns is-mobile is-multiline">
     <div class="column is-narrow">
     </div>
@@ -17,9 +38,7 @@
         </p>
     </div>
 </div>
-
-<button class="button is-info is-light is-medium is-fullwidth">Add A Game!</button>
-</div>
+<br>
 <div class="columns is-mobile is-multiline">
     <div class="column is-narrow">
     </div>
@@ -39,9 +58,8 @@
         </p>
     </div>
 </div>
-<button id="new" class="button is-info is-light is-medium is-fullwidth">Edit Stats</button>
-</div>
 
-{{> new-post}}
 
-{{> friendsList}}
+{{!-- {{> each-post}} --}}
+
+{{!-- {{> friendsList}} --}}
