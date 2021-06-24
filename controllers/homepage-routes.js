@@ -27,8 +27,11 @@ router.get('/signup', (req, res) => {
     res.render('sign-up');
 });
 
-router.get('/create', (req, res) => {
-    res.render('game-add');
+router.get('/createStats', (req, res) => {
+    res.render('add-stats');
+})
+router.get('/addGame', (req, res) => {
+    res.render('add-game');
 })
 
 // get game logic above
