@@ -1,0 +1,66 @@
+<div class="box">
+    <article class="media">
+        <div class="media-left">
+            <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                <form action="/profile" method="post" enctype="multipart/form-data"> <input type="file" name="avatar" />
+                </form>
+            </figure>
+        </div>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>{{user.firstName}} {{user.LastName}} </strong> <small> {{user.username}} </small>
+                    <br>
+                </p>
+            </div>
+
+        </div>
+    </article>
+</div>
+
+<div class="columns is-mobile is-multiline">
+    <div class="column is-narrow">
+    </div>
+    <div class="tile is-parent is-8">
+        <article class="tile is-child box">
+            <p class="title">My Games</p>
+            <div class="content">
+                <p>Game Titles</p>
+            </div>
+        </article>
+        <p class="bd-notification is-primary">
+            <code class="html">
+                <figure class="image is-128x128">
+                <img src="https://image.api.playstation.com/vulcan/img/cfn/113073miFl8n5KuJvbUODdSI8QAHJwVxQEnl2RAiJczrztnMIS-g3T2CyOvhthnE5hHJ7sRZ55W76sk30gfZWILvL0UAkzbT.png">
+              </figure>
+           </code>
+        </p>
+    </div>
+</div>
+<br>
+<div class="columns is-mobile is-multiline">
+    <div class="column is-narrow">
+    </div>
+    <div class="tile is-parent is-8">
+        <article class="tile is-child box">
+            <p class="title">Game Stats</p>
+            <div class="content">
+                <p>Game information</p>
+            </div>
+        </article>
+        <p class="bd-notification is-primary">
+            <code class="html">
+                <figure class="image is-128x128">
+                <img src="https://image.api.playstation.com/cdn/UP0700/CUSA03388_00/v8JlD8KcQUtTqaLBmpFnj1ESRR5zMkLk.png">
+              </figure>
+           </code>
+        </p>
+        <button><a href="/profile/addstats">Add Stats</a></button>
+    </div>
+</div>
+
+
+{{!-- {{> each-post}} --}}
+
+{{!-- {{> friendsList}} --}}
