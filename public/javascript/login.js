@@ -46,7 +46,6 @@ async function signupFormHandler(event) {
                 email,
                 password
             }),
-            // formData,
             headers: { 'Content-Type': 'application/json' }
         })
         // check the response status
