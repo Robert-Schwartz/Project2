@@ -20,17 +20,11 @@ Stat.init({
     game_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'game',
+            model: "game",
             key: "id"
         }
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'user',
-            key: "id"
-        }
-    }
+
 }, 
     {
         sequelize,

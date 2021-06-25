@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
         name: req.body.name,
         value: req.body.value,
         game_id: req.body.game_id,
-        user_id: req.session.user_id
+        
     }).then(newStatData => {
         res.json(newStatData)
     }).catch(err => {

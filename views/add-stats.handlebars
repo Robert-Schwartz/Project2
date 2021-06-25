@@ -3,12 +3,14 @@
     <h2>What game are you adding a stat for?</h2>
     <select name="" id="select-game">
         {{#each Games}}
-        <option value="{{this.id}}">{{this.title}}</option>
+        <option value=`{{this.id}}`>{{this.title}}</option>
         {{/each}}
     </select>
     <h2>Stat Type</h2>
     <input type="text" id="stat-type">
     <h2>Stat Value</h2>
     <input type="text" id="stat-value">
-    <button id="submitstat" type="submit">Add Stat</button>
+    <button class="button is-primary">Add Stat</button>
 </form>
+
+<script src="/javascript/add-stat.js"></script>
