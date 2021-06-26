@@ -4,8 +4,9 @@ async function findMyFriendFormHandler(event) {
     const username =document.querySelector('.find-my-friend').value.trim;
     console.log("username", username)
 
-    const response = await fetch('/api/users', {
-        method: 'GET',
+    const response = await fetch(`/api/users/${id}`, {
+        method: 'POST',
+
         body: JSON.stringify({
             username
         }),
@@ -13,10 +14,10 @@ async function findMyFriendFormHandler(event) {
     });
     console.log("username", username)
     if (response.ok) {
-        document.location.replace('/profile' + dbUserData.id);
+        document.location.replace('/' + dbUserData.id);
     } else {
         alert(response.statusText);
     }
 }
 
-document.querySelector('.find-friend-form').addEventListener('submit', findMyFriendFormHandler);
+document.querySelector('.find-friend-submit').addEventListener('click', findMyFriendFormHandler);
