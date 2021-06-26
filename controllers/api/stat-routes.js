@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
         Stat.create({
         name: req.body.name,
         value: req.body.value,
-        game_id: req.body.game_id,
+        game_id: req.body.game,
         user_id: req.session.user_id
         
     }).then(newStatData => {
