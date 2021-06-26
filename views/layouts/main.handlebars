@@ -17,6 +17,7 @@
         <div class="is-half">
             <i class="fas fa-user-astronaut"></i>
             <a href="/" class="button is-primary">Home</a>
+            <a href="/popular" class="button is-primary">Popular</a>
             {{#if loggedIn}}
             <a href="/profile" class="button is-link">Profile</a>
             <button class="button is-danger home-logout" id="logout">Logout</button>
@@ -34,14 +35,14 @@
 
 
     <section class="section">
-    {{> hero}}
+        {{> hero}}
     </section>
 
     <main>
         {{{ body }}}
     </main>
     <footer>
-    {{>footer}}
+        {{>footer}}
 
     </footer>
 

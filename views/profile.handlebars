@@ -60,6 +60,19 @@
 </div>
 
 
-{{!-- {{> each-post}} --}}
+{{#if posts.length}}
+<section>
+    <h2 class="description-text">Your Posts</h2>
+    <ol>
+        {{#each posts as |post|}}
+        <li>
+            {{> post-view}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit-link button is-warning">Edit Post</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
 
-{{!-- {{> friendsList}} --}}
+
+<script src="/javascript/post.js"></script>

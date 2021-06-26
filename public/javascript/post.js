@@ -13,7 +13,7 @@ async function newPostFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/popular');
         } else {
             alert(response.statusText);
         }
