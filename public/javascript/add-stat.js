@@ -3,7 +3,7 @@ async function statFormHandler (event) {
 
     const name = document.querySelector('#stat-type').value.trim();
     const value = document.querySelector('#stat-value').value.trim();
-    const game = document.querySelector('#select-game').value;
+    const game = document.querySelector('#select-game').value.trim();
 
     const response = await fetch('/api/stat', {
         method: 'POST',
