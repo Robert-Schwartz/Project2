@@ -7,7 +7,7 @@
 <form action="" class="comment-form">
     <div>
         <input type="hidden" name="post-id" value="{{post.id}}" />
-        <textarea class="textarea" placeholder="Hello world" id="comment-body" ></textarea>
+        <textarea class="textarea" placeholder="What would you like to say..." id="comment-body" ></textarea>
     </div>
     <br>
     <div>
@@ -16,7 +16,7 @@
 </form>
 {{/if}}
 
-{{!-- {{> comments post.comments}} --}}
+{{> comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
