@@ -24,16 +24,20 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Stat.create({
+    if (req.session) {
+        Stat.create({
         name: req.body.name,
         value: req.body.value,
-        game_id: req.body.game_id
+        game_id: req.body.game_id,
+        user_id: req.session.user_id
+        
     }).then(newStatData => {
         res.json(newStatData)
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
     })
+}   
 })
 
 router.delete('/:id', (req, res) => {

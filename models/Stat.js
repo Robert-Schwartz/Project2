@@ -19,11 +19,21 @@ Stat.init({
     },
     game_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: 'game',
-            key: "id"
+            key: 'id'
+        }
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id'
         }
     }
+
 }, 
     {
         sequelize,
