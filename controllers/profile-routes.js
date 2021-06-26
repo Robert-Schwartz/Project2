@@ -56,7 +56,6 @@ router.get('/edit/:id', (req, res) => {
 
 router.get('/addstats', (req, res) => {
     Games.findAll().then(gameData => {
-
         const games = gameData.map(post => post.get({plain: true}));
 
         res.render('add-stats', {Games: games});
