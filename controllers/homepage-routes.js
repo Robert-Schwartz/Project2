@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Games, Comment, Like, User } = require('../models');
+const { Games, Comment, Like, User, Post } = require('../models');
 
 router.get('/', (req, res) => {
     Games.findAll({
@@ -113,7 +113,7 @@ router.get('/post/:id', (req, res) => {
                 return;
             }
             const post = dbPostData.get({ plain: true });
-            res.render('new-post', {
+            res.render('add-comment', {
                 post,
                 loggedIn: req.session.loggedIn
             });
@@ -123,9 +123,6 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
-module.exports = router;
-
 
 
 module.exports = router;

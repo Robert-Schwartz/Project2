@@ -1,30 +1,6 @@
 const router = require('express').Router();
-const { Games, Comment, Like, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { User, Post, Comment } = require('../models');
 
-router.get('/', withAuth, (req, res) => {
-    Games.findAll({
-        where: {
-            user_id: req.session.user_id
-        }
-    }).then(dbGameData => {
-
-        const games = dbGameData.map(post => post.get({plain: true}));
-
-        res.render('profile', {games, loggedIn: true});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
-})
-
-router.get('/addstats', (req, res) => {
-    Games.findAll().then(gameData => {
-        const games = gameData.map(post => post.get({plain: true}));
-
-        res.render('add-stats', {Games: games});
-    });
-});
 router.get('/', (req, res) => {
     Post.findAll({
         order: [['created_at', 'DESC']],
@@ -50,7 +26,7 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('popular', {posts})
+        res.render('popular', { posts, loggedIn: req.session.cookie.loggedIn })
     })
         .catch(err => {
             console.log(err);
@@ -97,6 +73,5 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
 
 module.exports = router;
