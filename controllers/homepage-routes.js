@@ -10,9 +10,10 @@ router.get('/', (req, res) => {
             'description'
         ]
     }).then(dbAllGames => {
+        console.log(dbAllGames);
         const games = dbAllGames.map(game => game.get({plain: true}));
-
-        res.render('homepage', {game: dbAllGames, loggedIn: req.session.loggedIn});
+console.log(games);
+        res.render('homepage', {game: games, loggedIn: req.session.loggedIn});
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);

@@ -1,14 +1,15 @@
 const router = require('express').Router();
 const multer = require('multer');
+const path = require('path')
 
 const { User, Post, Comment, Games } = require('../../models');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '/tmp/upload')
+      cb(null, path.resolve(__dirname, '../../public/tmp/upload'))
     },
     filename: function (req, file, cb) {
-      cb(null, req.session.user_id)
+      cb(null, "" + req.session.user_id + "." + file.originalname.split(".")[1])
     }
   })
 
@@ -124,8 +125,10 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.post('/prof', upload.single(), (req, res) => {
-    res.status(200).json();
+router.post('/prof', upload.single("avatar"), (req, res) => {
+    console.log(req.file);
+    res.send()
+    
 })
 
 router.delete('/delete/:id', (req, res) => {
