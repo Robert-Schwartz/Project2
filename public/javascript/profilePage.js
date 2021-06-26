@@ -1,8 +1,15 @@
 
-var formSubmit = function(event) {
-    event.preventDefault();
+const input = document.querySelector("#prof-img")
 
-    fetch('/');
-}
+    const upload = (file) => {
+        fetch('/api/users/prof', {
+            method: 'POST',
+            body: file
+        })
+        .then(success => console.log(success))
+        .catch(err => console.log(err));
+    }
+    
+const onSelectFile = () => upload(input.files[0]);
 
-document.querySelector("#new", formSubmit);
+input.addEventListener('change', onSelectFile, false);

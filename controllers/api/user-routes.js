@@ -1,10 +1,18 @@
 const router = require('express').Router();
-//const multer = require('multer');
+const multer = require('multer');
 
 const { User, Post, Comment, Games } = require('../../models');
 
-//const images = multer('../../public/images/')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '/tmp/upload')
+    },
+    filename: function (req, file, cb) {
+      cb(null, req.session.user_id)
+    }
+  })
 
+const upload = multer({ storage: storage });
 
 //User create route, username is passed in from the event call on the front end.
 router.get('/', (req, res) => {
@@ -115,6 +123,10 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+router.post('/prof', upload.single(), (req, res) => {
+    res.status(200).json();
+})
 
 router.delete('/delete/:id', (req, res) => {
     User.destroy({
