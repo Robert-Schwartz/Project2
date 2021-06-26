@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('popular', { posts, loggedIn: req.session.cookie.loggedIn })
+        res.render('popular', { posts, loggedIn: req.session.loggedIn })
     })
         .catch(err => {
             console.log(err);
