@@ -65,17 +65,13 @@ router.post('/', (req, res) => {
         lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
-        // profilePicture: req.body.profilePicture
-
     }).then(dbUserData => {
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.firstName = dbUserData.firstName;
             req.session.lastName = dbUserData.lastName;
             req.session.username = dbUserData.username;
-            // req.session.profilePicture = result.profilePicture;
 
-            // req.session.loggedIn = true;
 
             res.json(dbUserData);
         });

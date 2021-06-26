@@ -17,6 +17,14 @@ router.get('/', withAuth, (req, res) => {
         res.status(500).json(err);
     })
 })
+
+router.get('/addstats', (req, res) => {
+    Games.findAll().then(gameData => {
+        const games = gameData.map(post => post.get({plain: true}));
+
+        res.render('add-stats', {Games: games});
+    });
+});
 router.get('/', (req, res) => {
     Post.findAll({
         order: [['created_at', 'DESC']],
@@ -89,8 +97,6 @@ router.get('/post/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
-module.exports = router;
 
 
 module.exports = router;
