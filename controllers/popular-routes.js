@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log('popular routes', req.session);
     Post.findAll({
         order: [['created_at', 'DESC']],
         attributes: [
@@ -27,20 +26,12 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('popular', { posts, loggedIn: req.session.loggedIn })
+        res.render('popular', { posts, loggedIn: req.session.cookie.loggedIn })
     })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
-});
-
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
 });
 
 router.get('/post/:id', (req, res) => {
@@ -72,10 +63,10 @@ router.get('/post/:id', (req, res) => {
                 return;
             }
             const post = dbPostData.get({ plain: true });
-            res.render('new-post', {
+            res.render('add-comment', {
                 post,
                 loggedIn: req.session.loggedIn
-            });
+             });
         })
         .catch(err => {
             console.log(err);
