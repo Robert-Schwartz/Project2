@@ -47,11 +47,6 @@ User.init(
                 len: [4]
             }
         }
-        // commenting out profilePicture so i can test the routes
-        // profilePicture: {
-        //     type: DataTypes.BLOB,
-        //     allowNull: false
-        // }
     },
     {
         hooks: {
