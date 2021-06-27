@@ -19,11 +19,11 @@
     <div class="column-8 gameStats">
         <article class="box">
             <p class="title">Game Stats</p>
-            {{#each this}}
+            {{#each Stat}}
             <div class="card">
-                <h1>{{this.game_id}}</h1>
-                <p>{{this.name}}</p>
-                <p>{{this.value}}</p>
+                <h1>{{game.title}}</h1>
+                <p>{{name}}</p>
+                <p>{{value}}</p>
             </div>
             {{/each}}
         </article>
