@@ -1,4 +1,3 @@
-
 const input = document.querySelector("#prof-img")
 
 const imgData = new FormData();
