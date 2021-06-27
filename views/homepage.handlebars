@@ -2,9 +2,9 @@
   <div class="column">
     {{> gameSearch }}
     {{#each game}}
-    <div class="is-flex-direction-row">
+    <div class="is-flex-direction-row" id="game-column">
     <div class="card is-flex-wrap justify-content-flex-start">
-      <h2 class="card-header">{{title}}</h2>
+      <h2 class="card-header" id="game-title">{{title}}</h2>
       <div class="card-content">
         <p class="card-content">{{description}}</p>
       </div>
@@ -15,8 +15,8 @@
   <div class="column">
     {{> friendSearch }}
     {{#each user}}
-    <div class="is-flex-direction-row">
-      <a href="/api/users/{{id}}" class="button">{{username}}</a>
+    <div class="is-flex-direction-row" id="friend-list">
+      <a href="/api/users/{{id}}" class="button is-link is-light">{{username}}</a>
     </div>
     {{/each}}
   </div>
