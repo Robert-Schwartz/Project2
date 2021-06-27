@@ -1,44 +1,48 @@
-<div class="box">
+<div class="profile box u">
     <article class="media">
-        <div class="media-left">
+        <div class="media-center">
             <figure class="image is-64x64">
                 <form action="/api/users/prof" method="post" enctype="multipart/form-data"> <input id="prof-img" type="file" name="avatar" class="button"/>
                 </form>
+
             </figure>
+            <h4><i class="fas fa-angle-double-up"></i>
+            Upload Your Game Photo</h4>
         </div>
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.firstName}} {{user.LastName}}</strong> 
+                    <strong>{{user.firstName}} {{user.LastName}}</strong>
                     <small>{{user.username}}</small>
                     <br>
                 </p>
             </div>
         </div>
-    
+
         <img src="/tmp/upload/{{user.id}}.png" alt="">
 
     </article>
 </div>
 <br>
-<div class="columns is-mobile is-multiline">
-    <div class="column is-narrow">
-    </div>
-    <div class="tile is-parent is-8">
-        <article class="tile is-child box">
+
+<div class="columns is-mobile">
+    <div class="row">
+    <div class="column-8 gameStats">
+        <article class="box">
             <p class="title">Game Stats</p>
             <div class="content">
                 <p>Game information</p>
             </div>
             {{#each this}}
             <div class="card">
-                <h1 class="card-content">{{this.game_id}}</h1>
-                <p class="card-content">{{this.name}}</p>
-                <p class="card-content">{{this.value}}</p>
+                <h1>{{this.game_id}}</h1>
+                <p>{{this.name}}</p>
+                <p>{{this.value}}</p>
             </div>
             {{/each}}
         </article>
-        <a href="/profile/addstats" class="button">Add Stats</a>
+        <a href="/profile/addstats" class="button column-4">Add Stats</a>
+    </div>
     </div>
 </div>
 
