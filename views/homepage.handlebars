@@ -14,5 +14,10 @@
   </div>
   <div class="column">
     {{> friendSearch }}
+    {{#each user}}
+    <div class="is-flex-direction-row">
+      <a href="/api/users/{{id}}" class="button">{{username}}</a>
+    </div>
+    {{/each}}
   </div>
 </article>

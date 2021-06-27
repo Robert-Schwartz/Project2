@@ -10,14 +10,24 @@ router.get('/', (req, res) => {
             'description'
         ]
     }).then(dbAllGames => {
-        console.log(dbAllGames);
-        const games = dbAllGames.map(game => game.get({plain: true}));
-console.log(games);
-        res.render('homepage', {game: games, loggedIn: req.session.loggedIn});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        User.findAll({
+            attributes: [
+                'username',
+                'id'
+            ]
+        }).then(userdata => {
+            
+            const users = userdata.map(user => user.get({ plain: true }))
+            const games = dbAllGames.map(game => game.get({ plain: true }));
+            console.log(users);
+            console.log(games);
+            res.render('homepage', { game: games, user: users, loggedIn: req.session.loggedIn });
+        })
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.get('/signup', (req, res) => {
@@ -57,10 +67,10 @@ router.get('/findMyFriend', (req, res) => {
             {
                 model: Games,
                 attributes: ['id', 'title'],
-                
+
             }
         ]
-    }) .then(dbUserData => {
+    }).then(dbUserData => {
         if (!dbUserData) {
             res.status(404).json({ message: 'No user found with this id' });
             return;
@@ -100,7 +110,7 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('profile', {posts, loggedIn: req.session.loggedIn})
+        res.render('profile', { posts, loggedIn: req.session.loggedIn })
     })
         .catch(err => {
             console.log(err);

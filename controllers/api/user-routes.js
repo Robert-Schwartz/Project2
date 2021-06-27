@@ -1,8 +1,10 @@
 const router = require('express').Router();
+const { stat } = require('fs');
 const multer = require('multer');
 const path = require('path')
 
 const { User, Post, Comment, Games } = require('../../models');
+const Stat = require('../../models/Stat');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -32,33 +34,21 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        }, 
-        include: [
-            {
-                model: Post,
-                attributes: ['id', 'title', 'content', 'created_at']
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'created_at'],
-                include: {
-                    model: Post,
-                    attributes: ['title']
-                }
-            },
-            {
-                model: Games,
-                attributes: ['id', 'title'],
-                
-            }
-        ]
+        }  
     }).then(dbUserData => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
+        Stat.findAll({
+            where: {
+                user_id: req.params.id
+            }
+        }).then(dbStatData => {
+        const stats = dbStatData.map(user => user.get({plain: true}))
+
+        console.log(stats)
+        console.log(dbUserData)
+        
+        res.render('otherUser', {user: dbUserData, stat: stats})
     })
+})
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
