@@ -15,17 +15,14 @@ router.get('/', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: [
-                    'username',
-                    //  'profilePicture'
-                ]
+                attributes: ['username', 'firstName', 'lastName']
             },
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                 include: {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'firstName', 'lastName']
                 }
             }
         ]
@@ -46,10 +43,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: User,
-                attributes: [
-                    'username',
-                    //  'profilePicture'
-                ]
+                attributes: ['username', 'firstName', 'lastName']
             },
             {
                 model: Comment,
@@ -57,7 +51,7 @@ router.get('/:id', (req, res) => {
                 include:
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'firstName', 'lastName']
                 }
 
             }
@@ -83,7 +77,8 @@ router.post('/', withAuth, (req, res) => {
         content: req.body.content,
         user_id: req.session.user_id
     })
-        .then(dbPostData => res.json(dbPostData))
+    
+    .then(dbPostData => res.json(dbPostData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
