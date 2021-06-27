@@ -39,14 +39,20 @@ router.get('/:id', (req, res) => {
         Stat.findAll({
             where: {
                 user_id: req.params.id
-            }
+            },
+            include: [
+                {
+                    model: Games,
+                    attributes: [ 'id', 'title' ] 
+                }
+            ]
         }).then(dbStatData => {
         const stats = dbStatData.map(user => user.get({plain: true}))
 
         console.log(stats)
         console.log(dbUserData)
         
-        res.render('otherUser', {user: dbUserData, stat: stats})
+        res.render('otherUser', {user: dbUserData, Stat: stats})
     })
 })
         .catch(err => {
