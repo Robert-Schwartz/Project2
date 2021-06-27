@@ -12,8 +12,9 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{this.firstName}} {{this.user.LastName}}</strong>
-                    <small>{{user.username}}</small>
+                    <strong>{{user.firstName}} {{user.lastName}}</strong>
+                    <br>
+                    <strong>{{user.username}}</strong>
                     <br>
                 </p>
             </div>
@@ -30,9 +31,6 @@
     <div class="column-8 gameStats">
         <article class="box">
             <p class="title">Game Stats</p>
-            <div class="content">
-                <p>Game information</p>
-            </div>
             {{#each this}}
             <div class="card">
                 <h1>{{this.game_id}}</h1>
@@ -46,7 +44,7 @@
     </div>
 </div>
 
-{{#if loggedIn}}
+{{!-- {{#if loggedIn}}
 <div class="popular">
 
 <h2 class="description-text">Whats Popping!</h2>
@@ -62,8 +60,5 @@
     <button class="button is-primary is-outlined post-button">Post</button>
 </form>
 </div>
-{{/if}}
-
+{{/if}} --}}
 <script src="/javascript/profilePage.js"></script>
-<script src="/javascript/postContent.js"></script>
-
