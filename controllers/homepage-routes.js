@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Games, Comment, Like, User, Post } = require('../models');
+const { Games, Comment, User, Post } = require('../models');
 
 router.get('/', (req, res) => {
     Games.findAll({
@@ -30,6 +29,7 @@ router.get('/', (req, res) => {
         });
 });
 
+
 router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
@@ -41,7 +41,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/createStats', (req, res) => {
     res.render('add-stats');
-})
+});
 router.get('/addGame', (req, res) => {
     res.render('add-game');
 })
@@ -82,8 +82,6 @@ router.get('/findMyFriend', (req, res) => {
             res.status(500).json(err);
         })
 })
-
-
 router.get('/', (req, res) => {
     console.log('homepage routes', req.session);
     Post.findAll({
@@ -167,8 +165,18 @@ router.get('/post/:id', (req, res) => {
         });
 });
 
-
-
-
+// router.get('/:username', (req, res) => {
+//     User.findOne({
+//         where: {
+//             username: req.params.username
+//         },
+//         attributes: { exclude: ['password'] }
+//     }).then(friendData => {
+//         res.render('otherUser', { friendData })
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;

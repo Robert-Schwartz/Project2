@@ -12,8 +12,9 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.firstName}} {{user.LastName}}</strong>
-                    <small>{{user.username}}</small>
+                    <strong>{{user.firstName}} {{user.lastName}}</strong>
+                    <br>
+                    <strong>{{user.username}}</strong>
                     <br>
                 </p>
             </div>
@@ -43,5 +44,21 @@
     </div>
 </div>
 
+{{!-- {{#if loggedIn}}
+<div class="popular">
 
+<h2 class="description-text">Whats Popping!</h2>
+<form action="" class="new-post-form box" id="popular">
+    <div>
+        <label class="label post-title">Title</label>
+        <textarea class="input is-success" placeholder="Title" id="post-title"></textarea>
+    </div>
+    <div>
+        <label class="label post-content">Content</label>
+        <textarea class="textarea is-success" placeholder="What's happening?" id="post-content"></textarea>
+    </div>
+    <button class="button is-primary is-outlined post-button">Post</button>
+</form>
+</div>
+{{/if}} --}}
 <script src="/javascript/profilePage.js"></script>

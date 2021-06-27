@@ -13,8 +13,7 @@
           <br>
           <small>{{created_at}} </small>
           <br>
-          <a href="/post/{{id}}" class="button is-primary">{{comment.length}} {{format_plural "comment"
-            comments.length}}</a>
+          <a href="/post/{{id}}" class="button is-primary">{{comment.length}} Reply</a>
         </p>
       </div>
       <div>
@@ -22,7 +21,7 @@
         <p>
           <strong>{{user.username}}</strong> <small>{{comment_text}}</small>
           <br>
-          </small> <br> <small>{{format_date created_at}} </small>
+          </small> <br> <small>{{created_at}} </small>
         </p>
         {{/each}}
       </div>
