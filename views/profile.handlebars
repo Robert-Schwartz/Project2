@@ -30,6 +30,13 @@
             <div class="content">
                 <p>Game information</p>
             </div>
+            {{#each this}}
+            <div class="card">
+                <h1 class="card-content">{{this.game_id}}</h1>
+                <p class="card-content">{{this.name}}</p>
+                <p class="card-content">{{this.value}}</p>
+            </div>
+            {{/each}}
         </article>
         <a href="/profile/addstats" class="button">Add Stats</a>
     </div>
