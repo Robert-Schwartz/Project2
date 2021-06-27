@@ -1,0 +1,32 @@
+<div class="profile box u">
+    <article class="media">
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>{{user.firstName}} {{user.lastName}}</strong> <br>
+                    <small>{{user.username}}</small>
+                    <br>
+                </p>
+            </div>
+        </div>
+        <img src="/tmp/upload/{{user.id}}.png" alt="">
+    </article>
+</div>
+<br>
+
+<div class="columns is-mobile">
+    <div class="row">
+    <div class="column-8 gameStats">
+        <article class="box">
+            <p class="title">Game Stats</p>
+            {{#each this}}
+            <div class="card">
+                <h1>{{this.game_id}}</h1>
+                <p>{{this.name}}</p>
+                <p>{{this.value}}</p>
+            </div>
+            {{/each}}
+        </article>
+    </div>
+    </div>
+</div>

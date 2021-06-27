@@ -1,0 +1,30 @@
+<div class="box post" id="post-view">
+  <article class="media">
+    <div class="media-left">
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{title}} </strong> <br>
+          <strong>{{user.username}}</strong>
+          <br>
+          {{content}}
+          <br>
+          <br>
+          <small>{{created_at}} </small>
+          <br>
+          <a href="/post/{{id}}" class="button is-primary">{{comment.length}} Reply</a>
+        </p>
+      </div>
+      <div>
+        {{#each comments}}
+        <p>
+          <strong>{{user.username}}</strong> <small>{{comment_text}}</small>
+          <br>
+        </p>
+        <br>
+        {{/each}}
+      </div>
+    </div>
+  </article>
+</div>

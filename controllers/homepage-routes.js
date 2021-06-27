@@ -1,46 +1,87 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Games, Comment, Like, User } = require('../models');
+const { Games, Comment, User, Post } = require('../models');
 
 router.get('/', (req, res) => {
     Games.findAll({
         attributes: [
             'id',
-            'title'
+            'title',
+            'description'
         ]
     }).then(dbAllGames => {
-        const games = dbAllGames.map(game => game.get({plain: true}));
-
-        res.render('homepage', {games, loggedIn: req.session.loggedIn});
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        User.findAll({
+            attributes: [
+                'username',
+                'id'
+            ]
+        }).then(userdata => {
+            
+            const users = userdata.map(user => user.get({ plain: true }))
+            const games = dbAllGames.map(game => game.get({ plain: true }));
+            console.log(users);
+            console.log(games);
+            res.render('homepage', { game: games, user: users, loggedIn: req.session.loggedIn });
+        })
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
+
 router.get('/signup', (req, res) => {
-    /*if (req.session.loggedIn) {
+    if (req.session.loggedIn) {
         res.redirect('/');
         return;
-    }*/
+    }
 
     res.render('sign-up');
 });
 
 router.get('/createStats', (req, res) => {
     res.render('add-stats');
-})
+});
 router.get('/addGame', (req, res) => {
     res.render('add-game');
 })
 
-// get game logic above
-// get game logic above
-// get game logic above
-// get game logic above
+router.get('/findMyFriend', (req, res) => {
+    User.findOne({
+        where: {
+            username: req.params.username
+        },
+        include: [
+            {
+                model: Post,
+                attributes: ['id', 'title', 'content', 'created_at']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'created_at'],
+                include: {
+                    model: Post,
+                    attributes: ['title']
+                }
+            },
+            {
+                model: Games,
+                attributes: ['id', 'title'],
 
-// get game logic above
-
+            }
+        ]
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(404).json({ message: 'No user found with this id' });
+            return;
+        }
+        res.json(dbUserData);
+    })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+})
 router.get('/', (req, res) => {
     console.log('homepage routes', req.session);
     Post.findAll({
@@ -67,7 +108,7 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('profile', {posts, loggedIn: req.session.loggedIn})
+        res.render('profile', { posts, loggedIn: req.session.loggedIn })
     })
         .catch(err => {
             console.log(err);
@@ -113,7 +154,7 @@ router.get('/post/:id', (req, res) => {
                 return;
             }
             const post = dbPostData.get({ plain: true });
-            res.render('new-post', {
+            res.render('add-comment', {
                 post,
                 loggedIn: req.session.loggedIn
             });
@@ -124,8 +165,18 @@ router.get('/post/:id', (req, res) => {
         });
 });
 
-module.exports = router;
-
-
+// router.get('/:username', (req, res) => {
+//     User.findOne({
+//         where: {
+//             username: req.params.username
+//         },
+//         attributes: { exclude: ['password'] }
+//     }).then(friendData => {
+//         res.render('otherUser', { friendData })
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 module.exports = router;

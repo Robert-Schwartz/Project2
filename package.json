@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Robert-Schwartz/myGAME#readme",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.1",
     "dotenv": "^10.0.0",
@@ -31,5 +32,9 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.7"
   }
 }
