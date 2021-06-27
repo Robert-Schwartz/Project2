@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-/* body {
+body {
     background-color: rgba(0, 0, 0, 0.8);
-} */
+}
 
 article {
     justify-content: space-between;
@@ -15,6 +15,13 @@ article {
 #forms {
     margin: 20px;
     justify-content: space-around;
+}
+
+#nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 nav {
@@ -63,6 +70,9 @@ section {
 .footer {
     font-weight: bold;
     background-color: #374457;
+    margin: 50px 0px;
+    width: 100%;
+    text-align: center;
 }
 
 .footer h3{
@@ -74,6 +84,7 @@ section {
 
 .footer h5{
     color:white;
+    font-size: large;
     font-weight: bold;
     font-family: helvetica, Arial, Helvetica, sans-serif;
     text-shadow: 1px 2px 1px black;
@@ -82,4 +93,17 @@ section {
 .card {
     width: 250px;
     height: 350px;
+}
+
+.searchBox {
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    margin: 15px;
+}
+
+#homepage {
+    padding: 50px;
+justify-content: space-evenly;
 }
