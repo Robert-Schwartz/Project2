@@ -58,6 +58,12 @@ Stat.belongsTo(Games, {
 });
 Games.hasMany(Stat, {
     foreignKey: 'game_id'
+});
+User.hasMany(Stat, {
+    foreignKey: 'user_id'
+})
+Stat.belongsTo(User, {
+    foreignKey: 'user_id'
 })
 
 

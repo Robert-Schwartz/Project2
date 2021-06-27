@@ -1,28 +1,48 @@
 const router = require('express').Router();
 const { Games, Comment, Like, User } = require('../models');
 const withAuth = require('../utils/auth');
+const fs = require('fs');
+const Stat = require('../models/Stat');
 
 router.get('/', withAuth, (req, res) => {
-    Games.findAll({
+    User.findOne({
         where: {
-            user_id: req.session.user_id
+            id: req.session.user_id
         }
-    }).then(dbGameData => {
+    }).then(userData => {
+        Stat.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'username']
+                },
+                {
+                    model: Games,
+                    attributes: ['id', 'title']
+                }
+            ]
+        }).then(statData => {
 
-        const games = dbGameData.map(post => post.get({plain: true}));
-
-        res.render('profile', {games, loggedIn: true});
+            const stats = statData.map(post => post.get({ plain: true }))
+            console.log(userData)
+            console.log(statData)
+            res.render('profile', { user: userData, Stat: stats, loggedIn: true });
+        })
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
     })
 })
 
+
 router.get('/addstats', (req, res) => {
     Games.findAll().then(gameData => {
-        const games = gameData.map(post => post.get({plain: true}));
+        const games = gameData.map(post => post.get({ plain: true }));
 
-        res.render('add-stats', {Games: games});
+        res.render('add-stats', { Games: games });
     });
 });
 router.get('/', (req, res) => {
@@ -50,7 +70,7 @@ router.get('/', (req, res) => {
         ]
     }).then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }))
-        res.render('popular', {posts})
+        res.render('popular', { posts })
     })
         .catch(err => {
             console.log(err);
@@ -90,7 +110,7 @@ router.get('/post/:id', (req, res) => {
             res.render('add-comment', {
                 post,
                 loggedIn: req.session.loggedIn
-             });
+            });
         })
         .catch(err => {
             console.log(err);

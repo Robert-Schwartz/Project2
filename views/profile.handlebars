@@ -1,72 +1,69 @@
-<div class="box">
+<div class="profile box u">
     <article class="media">
-        <div class="media-left">
+        <div class="media-center">
             <figure class="image is-64x64">
-                <div class="card">
                 <form action="/api/users/prof" method="post" enctype="multipart/form-data"> <input id="prof-img" type="file" name="avatar" class="button"/>
                 </form>
-                </div>
+
             </figure>
+            <h4><i class="fas fa-angle-double-up"></i>
+            Upload Your Game Photo</h4>
         </div>
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.firstName}} {{user.LastName}} </strong> <small> {{user.username}} </small>
+                    <strong>{{this.firstName}} {{this.user.LastName}}</strong>
+                    <small>{{user.username}}</small>
                     <br>
                 </p>
             </div>
-
         </div>
+
+        <img src="/tmp/upload/{{user.id}}.png" alt="">
+
     </article>
 </div>
-
-<div class="columns is-mobile is-multiline">
-    <div class="column is-narrow">
-    </div>
-    <div class="tile is-parent is-8">
-        <article class="tile is-child box">
-            <p class="title">My Games</p>
-            <div class="content">
-                <p>Game Titles</p>
-            </div>
-            <div>
-                {{#each Games}}
-                    {{> game Stat}}
-                {{/each}}
-            </div>
-        </article>
-        
-    </div>
-</div>
 <br>
-<div class="columns is-mobile is-multiline">
-    <div class="column is-narrow">
-    </div>
-    <div class="tile is-parent is-8">
-        <article class="tile is-child box">
+
+<div class="columns is-mobile">
+    <div class="row">
+    <div class="column-8 gameStats">
+        <article class="box">
             <p class="title">Game Stats</p>
             <div class="content">
                 <p>Game information</p>
             </div>
+            {{#each this}}
+            <div class="card">
+                <h1>{{this.game_id}}</h1>
+                <p>{{this.name}}</p>
+                <p>{{this.value}}</p>
+            </div>
+            {{/each}}
         </article>
-        <a href="/profile/addstats" class="button">Add Stats</a>
+        <a href="/profile/addstats" class="button column-4">Add Stats</a>
+    </div>
     </div>
 </div>
 
+{{#if loggedIn}}
+<div class="popular">
 
-{{#if posts.length}}
-<section>
-    <h2 class="description-text">Your Posts</h2>
-    <ol>
-        {{#each posts as |post|}}
-        <li>
-            {{> post-view}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link button is-warning">Edit Post</a>
-        </li>
-        {{/each}}
-    </ol>
-</section>
+<h2 class="description-text">Whats Popping!</h2>
+<form action="" class="new-post-form box" id="popular">
+    <div>
+        <label class="label post-title">Title</label>
+        <textarea class="input is-success" placeholder="Title" id="post-title"></textarea>
+    </div>
+    <div>
+        <label class="label post-content">Content</label>
+        <textarea class="textarea is-success" placeholder="What's happening?" id="post-content"></textarea>
+    </div>
+    <button class="button is-primary is-outlined post-button">Post</button>
+</form>
+</div>
 {{/if}}
 
 <script src="/javascript/profilePage.js"></script>
+<script src="/javascript/postContent.js"></script>
 

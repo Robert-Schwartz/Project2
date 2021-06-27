@@ -1,7 +1,9 @@
 {{!-- only do it if logged in --}}
 {{#if loggedIn}}
+<div class="popular">
+
 <h2 class="description-text">Create New Post</h2>
-<form action="" class="new-post-form box">
+<form action="" class="new-post-form box" id="popular">
     <div>
         <label class="label post-title">Title</label>
         <textarea class="input is-success" placeholder="Title" id="post-title"></textarea>
@@ -12,19 +14,22 @@
     </div>
     <button class="button is-primary is-outlined post-button">Post</button>
 </form>
+</div>
 {{/if}}
 
 
-
+<div class="popular>
 <ol class="post-list">
     <h2 class="description-text">Trending Today</h2>
     {{#each posts as |post|}}
     <li>
         {{> post-view post }}
     </li>
+
     {{/each}}
 </ol>
 
+</div>
 
 
 <script src="/javascript/postContent.js"></script>

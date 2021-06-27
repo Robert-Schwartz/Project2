@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const { Games, Comment, Like, User, Post } = require('../models');
+const { Games, Comment, User, Post } = require('../models');
 
 router.get('/', (req, res) => {
     Games.findAll({
