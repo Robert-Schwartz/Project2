@@ -1,21 +1,31 @@
 const router = require('express').Router();
 const { Games, Comment, Like, User } = require('../models');
 const withAuth = require('../utils/auth');
+const fs = require('fs')
 
 router.get('/', withAuth, (req, res) => {
     Games.findAll({
         where: {
             user_id: req.session.user_id
         }
+    
     }).then(dbGameData => {
 
+        User.findOne({
+            where: {
+                id: req.session.user_id
+            }
+        }).then(userData => {
+            console.log(userData);
         const games = dbGameData.map(post => post.get({plain: true}));
 
-        res.render('profile', {games, loggedIn: true});
-    }).catch(err => {
+        res.render('profile', {games: games, user: userData, loggedIn: true});
+    })
+}).catch(err => {
         console.log(err);
         res.status(500).json(err);
     })
+
 })
 
 router.get('/addstats', (req, res) => {

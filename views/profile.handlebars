@@ -2,41 +2,23 @@
     <article class="media">
         <div class="media-left">
             <figure class="image is-64x64">
-                <div class="card">
                 <form action="/api/users/prof" method="post" enctype="multipart/form-data"> <input id="prof-img" type="file" name="avatar" class="button"/>
                 </form>
-                </div>
             </figure>
         </div>
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.firstName}} {{user.LastName}} </strong> <small> {{user.username}} </small>
+                    <strong>{{user.firstName}} {{user.LastName}}</strong> 
+                    <small>{{user.username}}</small>
                     <br>
                 </p>
             </div>
-
         </div>
-    </article>
-</div>
+    
+        <img src="/tmp/upload/{{user.id}}.png" alt="">
 
-<div class="columns is-mobile is-multiline">
-    <div class="column is-narrow">
-    </div>
-    <div class="tile is-parent is-8">
-        <article class="tile is-child box">
-            <p class="title">My Games</p>
-            <div class="content">
-                <p>Game Titles</p>
-            </div>
-            <div>
-                {{#each Games}}
-                    {{> game Stat}}
-                {{/each}}
-            </div>
-        </article>
-        
-    </div>
+    </article>
 </div>
 <br>
 <div class="columns is-mobile is-multiline">
@@ -53,20 +35,6 @@
     </div>
 </div>
 
-
-{{#if posts.length}}
-<section>
-    <h2 class="description-text">Your Posts</h2>
-    <ol>
-        {{#each posts as |post|}}
-        <li>
-            {{> post-view}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link button is-warning">Edit Post</a>
-        </li>
-        {{/each}}
-    </ol>
-</section>
-{{/if}}
 
 <script src="/javascript/profilePage.js"></script>
 
