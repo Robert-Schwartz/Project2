@@ -1,22 +1,18 @@
-
 <article class="columns">
-    <div class="column is-half">
-    {{>gameSearch}}
+  <div class="column is-half">
+    {{> gameSearch }}
+    {{#each game}}
+    <div class="is-flex-direction-row">
+    <div class="card is-flex-wrap justify-content-flex-start">
+      <h2 class="card-header">{{title}}</h2>
+      <div class="card-content">
+        <p class="card-content">{{description}}</p>
+      </div>
+      </div>
     </div>
-    <div class="column is-half">
-    {{>friendSearch}}
-    </div>
-</article>
-
-{{!-- Showing post from friends --}}
-<ol class="post-list">
-    {{#each posts as |post|}}
-    <li>
-        {{> post-view post }}
-    </li>
     {{/each}}
-</ol>
-
-
-{{!-- <script src="/javascript/login.js"></script>
-<script src="/javascript/logout.js"></script> --}}
+  </div>
+  <div class="column is-half">
+    {{> friendSearch }}
+  </div>
+</article>

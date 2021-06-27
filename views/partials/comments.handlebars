@@ -1,3 +1,5 @@
+<a href="/popular" class="button is-info is-outlined"> &larr; Back to Popular</a>
+
 <div class="box comments">
     {{#each this}}
     <article class="media">
@@ -6,7 +8,7 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <small>{{user.username}}</small> <small>{{format_date created_at}} </small>
+                    <small>{{user.username}}</small> <small>{{format_date created_at}}</small>
                     <br>
                     {{comment_text}}
                 </p>

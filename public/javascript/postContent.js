@@ -1,4 +1,4 @@
-async function newPostFormHandler(event) {
+async function PostFormHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('#post-title').value;
@@ -13,10 +13,10 @@ async function newPostFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/popular');
         } else {
             alert(response.statusText);
         }
 }
 
-document.querySelector('.new-post-form').addEventListener('submit', newPostFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', PostFormHandler);

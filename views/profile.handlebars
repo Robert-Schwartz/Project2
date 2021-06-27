@@ -1,25 +1,26 @@
-<div class="columns is-mobile is-multiline">
-    <div class="column is-narrow">
-    </div>
-    <div class="tile is-parent is-8">
-        <article class="tile is-child box">
-            <p class="title">My Games</p>
+<div class="box">
+    <article class="media">
+        <div class="media-left">
+            <figure class="image is-64x64">
+                <form action="/api/users/prof" method="post" enctype="multipart/form-data"> <input id="prof-img" type="file" name="avatar" class="button"/>
+                </form>
+            </figure>
+        </div>
+        <div class="media-content">
             <div class="content">
-                <p>Game Titles</p>
+                <p>
+                    <strong>{{user.firstName}} {{user.LastName}}</strong> 
+                    <small>{{user.username}}</small>
+                    <br>
+                </p>
             </div>
-        </article>
-        <p class="bd-notification is-primary">
-            <code class="html">
-                <figure class="image is-128x128">
-                <img src="https://image.api.playstation.com/vulcan/img/cfn/113073miFl8n5KuJvbUODdSI8QAHJwVxQEnl2RAiJczrztnMIS-g3T2CyOvhthnE5hHJ7sRZ55W76sk30gfZWILvL0UAkzbT.png">
-              </figure>
-           </code>
-        </p>
-    </div>
-</div>
+        </div>
+    
+        <img src="/tmp/upload/{{user.id}}.png" alt="">
 
-<button class="button is-info is-light is-medium is-fullwidth">Add A Game!</button>
+    </article>
 </div>
+<br>
 <div class="columns is-mobile is-multiline">
     <div class="column is-narrow">
     </div>
@@ -29,19 +30,18 @@
             <div class="content">
                 <p>Game information</p>
             </div>
+            {{#each this}}
+            <div class="card">
+                <h1 class="card-content">{{this.game_id}}</h1>
+                <p class="card-content">{{this.name}}</p>
+                <p class="card-content">{{this.value}}</p>
+            </div>
+            {{/each}}
         </article>
-        <p class="bd-notification is-primary">
-            <code class="html">
-                <figure class="image is-128x128">
-                <img src="https://image.api.playstation.com/cdn/UP0700/CUSA03388_00/v8JlD8KcQUtTqaLBmpFnj1ESRR5zMkLk.png">
-              </figure>
-           </code>
-        </p>
+        <a href="/profile/addstats" class="button">Add Stats</a>
     </div>
 </div>
-<button id="new" class="button is-info is-light is-medium is-fullwidth">Edit Stats</button>
-</div>
 
-{{> new-post}}
 
-{{> friendsList}}
+<script src="/javascript/profilePage.js"></script>
+

@@ -1,10 +1,19 @@
 const router = require('express').Router();
-//const multer = require('multer');
+const multer = require('multer');
+const path = require('path')
 
 const { User, Post, Comment, Games } = require('../../models');
 
-//const images = multer('../../public/images/')
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(__dirname, '../../public/tmp/upload'))
+    },
+    filename: function (req, file, cb) {
+      cb(null, "" + req.session.user_id + "." + file.originalname.split(".")[1])
+    }
+  })
 
+const upload = multer({ storage: storage });
 
 //User create route, username is passed in from the event call on the front end.
 router.get('/', (req, res) => {
@@ -23,7 +32,7 @@ router.get('/:id', (req, res) => {
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
-        },
+        }, 
         include: [
             {
                 model: Post,
@@ -61,17 +70,17 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
-        // profilePicture: req.body.profilePicture
-
     }).then(dbUserData => {
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
+            req.session.firstName = dbUserData.firstName;
+            req.session.lastName = dbUserData.lastName;
             req.session.username = dbUserData.username;
-            // req.session.profilePicture = result.profilePicture;
 
-            // req.session.loggedIn = true;
 
             res.json(dbUserData);
         });
@@ -115,6 +124,12 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+router.post('/prof', upload.single("avatar"), (req, res) => {
+    console.log(req.file);
+    res.send()
+    
+})
 
 router.delete('/delete/:id', (req, res) => {
     User.destroy({

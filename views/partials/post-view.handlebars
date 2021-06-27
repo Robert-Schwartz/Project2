@@ -5,19 +5,24 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{title}} </strong> <br> <small>{{user.username}}</small> <br> <small>{{created_at}} </small>
-          <br>
+          <strong>{{title}} </strong> <br>
+          <strong>{{user.username}}</strong>
           <br>
           {{content}}
           <br>
           <br>
-          <a href="/post/{{id}}" class="button is-primary">{{comment.length}} {{format_plural "comment" comments.length}}</a>
+          <small>{{created_at}} </small>
+          <br>
+          <a href="/post/{{id}}" class="button is-primary">{{comment.length}} {{format_plural "comment"
+            comments.length}}</a>
         </p>
       </div>
       <div>
         {{#each comments}}
         <p>
-          <strong>{{user.username}} </strong> <small>{{comment_text}}</small>
+          <strong>{{user.username}}</strong> <small>{{comment_text}}</small>
+          <br>
+          </small> <br> <small>{{format_date created_at}} </small>
         </p>
         {{/each}}
       </div>
