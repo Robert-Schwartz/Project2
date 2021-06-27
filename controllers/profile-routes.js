@@ -6,7 +6,7 @@ const Stat = require('../models/Stat');
 
 router.get('/', withAuth, (req, res) => {
     User.findOne({
-        attributes: [ 'id', 'username'],
+        attributes: [ 'id', 'username', 'firstName', 'lastName'],
         where: {
             id: req.session.user_id
         }
