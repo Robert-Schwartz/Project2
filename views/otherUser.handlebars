@@ -14,20 +14,15 @@
     </article>
 </div>
 <br>
-
-<div class="columns is-mobile">
-    <div class="row">
-        <div class="column-8 gameStats">
-            <article class="box">
-                <p class="title">Game Stats</p>
-                {{#each Stat}}
-                <div class="card">
-                    <h1>{{game.title}}</h1>
-                    <p>{{name}}</p>
-                    <p>{{value}}</p>
-                </div>
-                {{/each}}
-            </article>
+    <p class="stat-text title" >Game Stats</p>
+<div class="tile is-ancestor" id="game-stat">
+    {{#each Stat}}
+    <div class="tile is-parent">
+        <div class="tile is-child notification is-success">
+            <h1 class="title">{{game.title}}</h1>
+            <p class="subtitle">{{name}}</p>
+            <p class="subtitle">{{value}}</p>
         </div>
     </div>
+    {{/each}}
 </div>
