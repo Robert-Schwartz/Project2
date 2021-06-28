@@ -27,7 +27,7 @@
 ### Leave questions at: https://github.com/Robert-Schwartz/myGAME
 
 # Deployed Link: 
-https://nameless-forest-93658.herokuapp.com/
+https://mygameproject2.herokuapp.com
 
 # Screenshot:
 [!screenshot](./Capture.PNG)
