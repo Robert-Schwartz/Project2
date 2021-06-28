@@ -3,7 +3,8 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.firstName}} {{user.lastName}}</strong> <br>
+                    <strong class="user-info">{{user.firstName}} {{user.lastName}}</strong> 
+                    <br>
                     <small>{{user.username}}</small>
                     <br>
                 </p>
@@ -16,17 +17,17 @@
 
 <div class="columns is-mobile">
     <div class="row">
-    <div class="column-8 gameStats">
-        <article class="box">
-            <p class="title">Game Stats</p>
-            {{#each Stat}}
-            <div class="card">
-                <h1>{{game.title}}</h1>
-                <p>{{name}}</p>
-                <p>{{value}}</p>
-            </div>
-            {{/each}}
-        </article>
-    </div>
+        <div class="column-8 gameStats">
+            <article class="box">
+                <p class="title">Game Stats</p>
+                {{#each Stat}}
+                <div class="card">
+                    <h1>{{game.title}}</h1>
+                    <p>{{name}}</p>
+                    <p>{{value}}</p>
+                </div>
+                {{/each}}
+            </article>
+        </div>
     </div>
 </div>
