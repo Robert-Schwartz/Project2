@@ -26,8 +26,11 @@
 # Questions:
 ### Leave questions at: https://github.com/Robert-Schwartz/myGAME
 
+# Deployed Link: 
+https://nameless-forest-93658.herokuapp.com/
+
 # Screenshot:
-[!screenshot](./Capture.png)
+[!screenshot](./Capture.PNG)
 
 # Created By:
 ### Robert Schwartz, Samuel Obudamowo, Elias Saunders, Chris Bussiere
