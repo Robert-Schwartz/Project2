@@ -1,15 +1,22 @@
 
-<form action="submit" class="add-form box">
+<form action="submit" class="add-form box" id="new-stats">
     <h2>What game are you adding a stat for?</h2>
-    <select name="" id="select-game">
+    <br>
+    <div class="select is-primary"> 
+    <select>
         {{#each Games}}
         <option value="{{this.id}}">{{this.title}}</option>
         {{/each}}
     </select>
-    <h2>Stat Type</h2>
-    <input type="text" id="stat-type">
+    </div>
+    <br>
+    <br>
+    <h2 >Stat Type</h2>
+    <input type="text" id="stat-type" class="input is-primary">
     <h2>Stat Value</h2>
-    <input type="text" id="stat-value">
+    <input type="text" id="stat-value" class="input is-primary">
+    <br>
+    <br>
     <button class="button is-primary">Add Stat</button>
 </form>
 

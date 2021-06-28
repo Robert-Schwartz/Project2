@@ -131,11 +131,15 @@ justify-content: space-evenly;
 #popular {
     height: 50%;
     width: 60%;
+    margin: 20px;
     padding: 25px;
     /* margin: 40px; */
 }
 
 /* ----------- Profile Page ----------- */
+.user-info {
+    font-size: 30px;
+}
 .profile {
     margin: 15px;
     padding: 20px;
@@ -156,13 +160,30 @@ font-size: xx-large;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.gameStats {
+.upload {
     margin:20px;
-font-weight: bold;
-font-size: xx-large;
-  font-style: italic;
-  color: #7510F7;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-height: auto;
-width: auto;
+    font-weight: bold;
+    font-size: xx-large;
+    color: #7510F7;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: auto;
+    width: auto;
+}
+.stat-text {
+    margin: 35px;
+}
+#game-stat, #add-stat {
+    margin: 25px;
+
+}
+.profile-photo {
+    width: 20%;
+}
+
+/* add stats page */
+.input {
+    width: 40%;
+}
+#new-stats {
+    margin: 30px;
 }
