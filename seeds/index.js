@@ -1,13 +1,12 @@
 const seedGames = require('./game-seeds');
-const seedStats = require('./stat-seeds');
 
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
 
     await seedGames();
-    await seedStats();
+
 };
 
 seedAll();
