@@ -3,7 +3,7 @@
     <h2>What game are you adding a stat for?</h2>
     <br>
     <div class="select is-primary"> 
-    <select>
+    <select id="select-game">
         {{#each Games}}
         <option value="{{this.id}}">{{this.title}}</option>
         {{/each}}
@@ -12,9 +12,9 @@
     <br>
     <br>
     <h2 >Stat Type</h2>
-    <input type="text" id="stat-type" class="input is-primary">
+    <input type="text" id="stat-type" class="input is-primary" placeholder="Stats Category">
     <h2>Stat Value</h2>
-    <input type="text" id="stat-value" class="input is-primary">
+    <input type="text" id="stat-value" class="input is-primary" placeholder="Stats Value">
     <br>
     <br>
     <button class="button is-primary">Add Stat</button>
