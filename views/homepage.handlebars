@@ -1,19 +1,21 @@
 <article id="homepage" class="columns">
   <div class="column">
-    {{> gameSearch }}
+    <p class="title">Games</p>
+
     {{#each game}}
     <div class="is-flex-direction-row" id="game-column">
-    <div class="card is-flex-wrap justify-content-flex-start">
-      <h2 class="card-header" id="game-title">{{title}}</h2>
-      <div class="card-content">
-        <p class="card-content">{{description}}</p>
-      </div>
+      <div class="card is-flex-wrap justify-content-flex-start">
+        <h2 class="card-header" id="game-title">{{title}}</h2>
+        <div class="card-content">
+          <p class="card-content">{{description}}</p>
+        </div>
       </div>
     </div>
     {{/each}}
   </div>
   <div class="column">
-    {{> friendSearch }}
+  <p class="title">Users</p>
+
     {{#each user}}
     <div class="is-flex-direction-row" id="friend-list">
       <a href="/api/users/{{id}}" class="button is-link is-light">{{username}}</a>
